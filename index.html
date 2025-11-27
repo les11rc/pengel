@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster Impacto IA na Indústria</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e5e7eb; /* Grey background for the page */
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* A0 Aspect Ratio Simulation (approximate for screen) */
+        #poster-container {
+            width: 100%;
+            max-width: 1400px;
+            background-color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Header Style imitating ISEP/Scientific style */
+        header {
+            background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 8px solid #f97316; /* Orange accent */
+        }
+
+        .column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background-color: #f3f4f6;
+            flex-grow: 1;
+        }
+
+        .poster-section {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            background-color: #eff6ff;
+            color: #1e3a8a;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 0.5rem;
+            margin: -1rem -1rem 1rem -1rem;
+            border-bottom: 2px solid #3b82f6;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .highlight-box {
+            background-color: #fff7ed;
+            border-left: 4px solid #f97316;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        /* List styling */
+        ul.custom-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul.custom-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        ul.custom-list li::before {
+            content: "\f058"; /* FontAwesome check-circle */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: #3b82f6;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        /* Case study card */
+        .case-study {
+            background-color: #1e3a8a;
+            color: white;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .case-study h4 {
+            color: #f97316; /* Orange */
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            margin-top: auto;
+        }
+
+        /* Chart container */
+        .chart-container {
+            position: relative;
+            height: 250px;
+            width: 100%;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .column-layout {
+                grid-template-columns: 1fr; /* Stack on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="poster-container">
+        <!-- HEADER -->
+        <header>
+            <div class="flex justify-between items-center mb-4">
+                <div class="text-left w-1/4">
+                    <!-- Placeholder for Logo -->
+                    <div class="text-xs font-bold bg-white/20 p-2 rounded inline-block">
+                        ISEP - DEE
+                    </div>
+                </div>
+                <div class="w-2/4">
+                    <h1 class="text-4xl font-black uppercase mb-2 tracking-wide leading-tight">Impacto da Inteligência Artificial na Indústria</h1>
+                    <h2 class="text-xl font-light text-orange-200">O Motor da Indústria 4.0 em Portugal</h2>
+                </div>
+                <div class="text-right w-1/4 text-sm opacity-90">
+                    <p><strong>Autores:</strong></p>
+                    <p>Diogo Braga (1231516)</p>
+                    <p>Cristiano Moreira (1231513)</p>
+                    <p>Pedro Ferreira (1241836)</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT COLUMNS -->
+        <div class="column-layout">
+            
+            <!-- COLUMN 1: Context & Objectives -->
+            <div class="col-1">
+                <div class="poster-section">
+                    <h3 class="section-title">1. Contextualização</h3>
+                    <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                        A Inteligência Artificial (IA) é o motor da <strong>Indústria 4.0</strong>, integrando IoT, Big Data e Robótica. Esta tecnologia permite uma produção mais flexível, eficiente e personalizada, alterando profundamente os paradigmas tradicionais.
+                    </p>
+                    <div class="highlight-box">
+                        <h4 class="font-bold text-orange-600 text-sm mb-1">Cenário em Portugal</h4>
+                        <p class="text-xs text-gray-700">
+                            Crescimento impulsionado pelo <strong>AI Portugal 2030</strong> e <strong>COMPETE 2030</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="poster-section">
+                    <h3 class="section-title">2. Objetivos</h3>
+                    <ul class="custom-list text-sm text-gray-700">
+                        <li><strong>Analisar:</strong> O papel da IA na transformação do setor industrial português.</li>
+                        <li><strong>Identificar:</strong> Áreas de aplicação, maturidade digital e benefícios.</li>
+                        <li><strong>Avaliar:</strong> Desafios éticos, segurança de dados e qualificação.</li>
+                    </ul>
+                </div>
+
+                <div class="poster-section">
+                    <h3 class="section-title">3. Metodologia</h3>
+                    <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                        <div class="p-2 bg-blue-50 rounded">
+                            <i class="fas fa-book text-2xl text-blue-600 mb-1"></i>
+                            <p class="font-bold">Pesquisa Bibliográfica</p>
+                        </div>
+                        <div class="p-2 bg-blue-50 rounded">
+                            <i class="fas fa-building text-2xl text-blue-600 mb-1"></i>
+                            <p class="font-bold">Estudo de Caso</p>
+                        </div>
+                        <div class="p-2 bg-blue-50 rounded">
+                            <i class="fas fa-chart-pie text-2xl text-blue-600 mb-1"></i>
+                            <p class="font-bold">Análise de Dados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMN 2: Applications & Case Study -->
+            <div class="col-2">
+                <div class="poster-section">
+                    <h3 class="section-title">4. Aplicações Chave</h3>
+                    
+                    <div class="flex items-start mb-4">
+                        <div class="bg-blue-600 text-white p-3 rounded-full mr-3 shrink-0">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Manutenção Preditiva</h4>
+                            <p class="text-xs text-gray-600">Antecipação de falhas via sensores, reduzindo o tempo de inatividade.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start mb-4">
+                        <div class="bg-blue-600 text-white p-3 rounded-full mr-3 shrink-0">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Controlo de Qualidade</h4>
+                            <p class="text-xs text-gray-600">Visão computacional para inspeção automática superior ao olho humano.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="bg-blue-600 text-white p-3 rounded-full mr-3 shrink-0">
+                            <i class="fas fa-truck-loading"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Logística Inteligente</h4>
+                            <p class="text-xs text-gray-600">Otimização de rotas e robótica colaborativa na cadeia de suprimentos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study shadow-lg">
+                    <h3 class="text-lg font-bold border-b border-orange-500 pb-2 mb-2"><i class="fas fa-search"></i> Estudo de Caso</h3>
+                    <h4 class="text-xl">Continental (Lousado)</h4>
+                    <p class="text-sm opacity-90 mb-3">Implementação de sistema pioneiro de controlo de qualidade apoiado por IA.</p>
+                    
+                    <div class="bg-white/10 p-2 rounded mb-2">
+                        <p class="text-xs font-bold text-orange-300">TECNOLOGIA:</p>
+                        <p class="text-xs">Visão computacional para detetar imperfeições minúsculas em pneus.</p>
+                    </div>
+                    
+                    <div class="bg-white/10 p-2 rounded">
+                        <p class="text-xs font-bold text-green-300">RESULTADOS:</p>
+                        <ul class="list-disc list-inside text-xs">
+                            <li>Aumento da precisão na inspeção.</li>
+                            <li>Redução de desperdícios.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMN 3: Results, Challenges & Conclusion -->
+            <div class="col-3">
+                <div class="poster-section">
+                    <h3 class="section-title">5. Resultados</h3>
+                    <p class="text-sm mb-2 text-center font-bold text-gray-600">Panorama Nacional</p>
+                    <div class="chart-container">
+                        <canvas id="resultsChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center mt-2 text-gray-500 italic">Fonte: APDC & Compete 2030</p>
+                </div>
+
+                <div class="poster-section bg-orange-50 border-orange-200">
+                    <h3 class="section-title" style="background-color: #ffedd5; color: #c2410c; border-bottom-color: #f97316;">6. Desafios</h3>
+                    <div class="flex items-center text-red-600 font-bold text-sm mb-2">
+                        <i class="fas fa-exclamation-triangle mr-2"></i> Escassez de Talentos (71%)
+                    </div>
+                    <p class="text-xs text-gray-700">
+                        A falta de competências digitais e a necessidade de adaptação organizacional são os principais obstáculos, além de questões éticas e segurança de dados.
+                    </p>
+                </div>
+
+                <div class="poster-section">
+                    <h3 class="section-title">7. Conclusão</h3>
+                    <p class="text-sm text-gray-700 leading-snug">
+                        A IA não é apenas uma ferramenta, mas um <strong>fator estratégico de competitividade</strong>. O sucesso da digitalização em Portugal depende de políticas públicas contínuas e forte aposta na formação especializada.
+                    </p>
+                </div>
+                
+                <div class="text-xs text-gray-500 mt-4 border-t pt-2">
+                    <p class="font-bold">Referências:</p>
+                    <p>[1] APDC (2024); [2] COMPETE 2030; [3] INCoDe.2030; [4] Continental (2023).</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            Instituto Superior de Engenharia do Porto | Departamento de Engenharia Eletrotécnica | 2024/2025
+        </div>
+    </div>
+
+    <script>
+        // Chart.js Configuration
+        const ctx = document.getElementById('resultsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Adoção de IA', 'Escassez Talentos'],
+                datasets: [{
+                    label: 'Percentagem (%)',
+                    data: [62, 71],
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.7)', // Blue
+                        'rgba(239, 68, 68, 0.7)'   // Red
+                    ],
+                    borderColor: [
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(239, 68, 68, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + "%"
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
